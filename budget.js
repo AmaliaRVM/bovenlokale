@@ -64,7 +64,10 @@ console.log(general);
 
 for (const [key, value] of Object.entries(generalBudget)) {
   divGeneral.innerHTML = divGeneral.innerHTML + `
-  <p>${key} : ${value}</p>
+  <div class="values">
+    <div><p>${key}</p></div>
+    <div><p>${value}</p></div>
+  </div>
   `
 }
 
@@ -74,11 +77,14 @@ const kor = Object.values(kortrijkBudget).reduce((acc, val) => acc + val, 0);
 console.log(kor);
 
 const totalKortrijk = general + kor;
-console.log(totalKortrijk);
+const totalKortrijkRound = Math.round(totalKortrijk);
 
 for (const [key, value] of Object.entries(kortrijkBudget)) {
   divKortrijk.innerHTML = divKortrijk.innerHTML + `
-    <p>${key} : ${value}</p>
+    <div class="values">
+      <div><p>${key}</p></div>
+      <div><p>${value}</p></div>
+    </div>
   `
 }
 
@@ -88,55 +94,63 @@ const gent = Object.values(gentBudget).reduce((acc, val) => acc + val, 0);
 console.log(gent);
 
 const totalGent = general + gent;
-console.log(totalGent);
+const totalGentRound = Math.round(totalGent);
 
 for (const [key, value] of Object.entries(gentBudget)) {
   divGent.innerHTML = divGent.innerHTML + `
-  <p>${key} : ${value}</p>
+  <div class="values">
+    <div><p>${key}</p></div>
+    <div><p>${value}</p></div>
+  </div>
   `
 }
 
-//General budget for ODLDesign&Democracy Gent 2026
+//General budget for ODLSounds&Bits Brussels 2027
 
 const bru = Object.values(bruBudget).reduce((acc, val) => acc + val, 0);
 console.log(bru);
 
 const totalBru = general + bru;
-console.log(totalBru);
-
-const totalTotal =  totalKortrijk + totalGent + totalBru;
-console.log(totalTotal);
+const totalBruRound = Math.round(totalBru);
 
 for (const [key, value] of Object.entries(bruBudget)) {
   divBrussels.innerHTML = divBrussels.innerHTML + `
-  <p>${key} : ${value}</p>
+  <div class="values">
+    <div><p>${key}</p></div>
+    <div><p>${value}</p></div>
+  </div>
   `
 }
 
-//Display data on html
+//Total Bovenlokale
+const totalTotal =  totalKortrijk + totalGent + totalBru;
+console.log(totalTotal);
+const totalTotalRound = Math.round(totalTotal);
+
+//Display data of the total boven and total budgets for each edition on html
 
 sectionBoven.innerHTML = sectionBoven.innerHTML + `
   <h1>Bovenlokale<h1>
-  <h2>${totalTotal}</h2>  
+  <h2>${totalTotalRound}</h2>  
 `
 
 sectionKortrijk.innerHTML = sectionKortrijk.innerHTML + `
   <div>
       <h1>ODLTextile Kortrijk 2025 Budget</h1>
-      <h2>${totalKortrijk}<h1>
+      <h2>${totalKortrijkRound}<h1>
   </div>
 `
 
 sectionGent.innerHTML = sectionGent.innerHTML + `
   <div>
       <h1>ODLDesign&Democracy Gent 2026 Budget</h1>
-      <h2>${totalGent}<h1>
+      <h2>${totalGentRound}<h1>
   </div>
 `
 
 sectionBrussels.innerHTML = sectionBrussels.innerHTML + `
   <div>
       <h1>ODLSounds&Bits 2027 Brussels Budget</h1>
-      <h2>${totalBru}<h1>
+      <h2>${totalBruRound}<h1>
   </div>
 `
