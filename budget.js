@@ -3,6 +3,7 @@ const sectionBoven = document.querySelector('section.bovenlokale_budget');
 const sectionKortrijk = document.querySelector('section.kortrijk_main_container');
 const sectionGent = document.querySelector('section.gent_main_container');
 const sectionBrussels = document.querySelector('section.brussels_main_container');
+const divGeneralBudget = document.querySelector('div.general_budget');
 const divGeneral = document.querySelector('div.general');
 const divKortrijk = document.querySelector('section.kortrijk');
 const divGent = document.querySelector('section.gent');
@@ -60,6 +61,7 @@ const bruBudget = {
 //Same general budget for three editions
 
 const general = Object.values(generalBudget).reduce((acc, val) => acc + val, 0);
+const generalRound = Math.round(general);
 console.log(general);
 
 for (const [key, value] of Object.entries(generalBudget)) {
@@ -133,24 +135,26 @@ sectionBoven.innerHTML = sectionBoven.innerHTML + `
   <h1>Bovenlokale<h1>
   <h2>${totalTotalRound}</h2>  
 `
-
+divGeneralBudget.innerHTML = divGeneralBudget.innerHTML + `
+  <h2>${generalRound}</h2>
+`
 sectionKortrijk.innerHTML = sectionKortrijk.innerHTML + `
   <div>
       <h1>ODLTextile Kortrijk 2025 Budget</h1>
-      <h2>${totalKortrijkRound}<h1>
+      <h2>${generalRound} + ${kor} = ${totalKortrijkRound}<h2>
   </div>
 `
 
 sectionGent.innerHTML = sectionGent.innerHTML + `
   <div>
       <h1>ODLDesign&Democracy Gent 2026 Budget</h1>
-      <h2>${totalGentRound}<h1>
+      <h2>${generalRound} + ${gent} = ${totalGentRound}<h1>
   </div>
 `
 
 sectionBrussels.innerHTML = sectionBrussels.innerHTML + `
   <div>
       <h1>ODLSounds&Bits 2027 Brussels Budget</h1>
-      <h2>${totalBruRound}<h1>
+      <h2>${generalRound} + ${bru} = ${totalBruRound}<h1>
   </div>
 `
